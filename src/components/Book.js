@@ -1,14 +1,20 @@
-import React from 'react'
+import React from 'react';
+import { PropTypes } from 'prop-types';
 
-const Book = (props) => {
-    return (
-        <div>
-            <ul>
-                <li>{props.title}</li>
-                <li>{props.author}</li>
-            </ul>
-        </div>
-    )
-}
+const Book = ({ book }) => (
+  <div>
+    <ul>
+      <li>{book.title}</li>
+      <li>{book.author}</li>
+    </ul>
+  </div>
+);
 
-export default Book
+Book.propTypes = {
+  book: PropTypes.shape({
+    title: PropTypes.string,
+    author: PropTypes.string,
+  }).isRequired,
+};
+
+export default Book;

@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
 import Books from './pages/Books';
 import Categories from './pages/Categories';
 import Navigation from './components/Navigation';
@@ -8,8 +9,8 @@ function App() {
     <>
       <Navigation />
       <Routes>
-        <Route path='/' element={<Books />} />
-        <Route path='/categories' element={<Categories />} />
+        <Route path="/" element={<Books />} />
+        <Route path="/categories" element={<Categories />} />
       </Routes>
     </>
 
