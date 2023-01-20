@@ -7,7 +7,6 @@ const Books = () => (
     <Book title="Dracula" author="Arthur Conan Doyle" />
     <Form />
   </>
-
 );
 
 export default Books;
