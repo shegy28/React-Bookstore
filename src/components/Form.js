@@ -10,6 +10,7 @@ const Form = () => (
         <option value="jk-rowling">JK Rowling</option>
         <option value="jane-austin">Jane Austen</option>
       </select>
+      <button type="button">Add Book</button>
     </form>
   </div>
 );
