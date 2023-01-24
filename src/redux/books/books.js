@@ -1,27 +1,44 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
 
-const ADD = 'bookstore/books/ADD';
-const REMOVE = 'bookstore/books/REMOVE';
+const ADD = 'ADD';
+const REMOVE = 'REMOVE';
+const initialState = [
+  {
+    id: uuidv4(),
+    title: 'One Hundred Years of Solitude',
+    author: 'Gabriel Garcia Marquez',
+  },
+  {
+    id: uuidv4(),
+    title: 'A Passage to India',
+    author: 'E.M. Forster',
+  },
+];
 
 const addBook = (book) => ({
   type: ADD,
-  book,
+  payload: {
+    id: uuidv4(),
+    title: book.title,
+    author: book.author,
+  },
 });
 
-const removeBook = (book) => ({
+const removeBook = (index) => ({
   type: REMOVE,
-  book,
+  payload: index,
 });
 
-const bookReducer = createReducer([], {
-  [ADD]: (state, action) => {
-    state.push(action.book);
-  },
-
-  [REMOVE]: (state, action) => {
-    state.filter((book) => book.id !== action.book.id);
-  },
-});
+const bookReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD:
+      return [...state, action.payload];
+    case REMOVE:
+      return [...state.filter((book) => book.id !== action.payload)];
+    default:
+      return state;
+  }
+};
 
 export { addBook, removeBook };
 export default bookReducer;
